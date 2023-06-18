@@ -346,9 +346,8 @@ class _EpubViewState extends State<EpubView> {
               padding: options.paragraphPadding as EdgeInsets?,
             ).merge(Style.fromTextStyle(options.textStyle)),
           },
-          customRenders: {
-            tagMatcher('img'):
-                CustomRender.widget(widget: (context, buildChildren) {
+          customRender: {
+            'img': (context, child) {
               final url = context.tree.element!.attributes['src']!
                   .replaceAll('../', '');
               return Image(
@@ -358,7 +357,7 @@ class _EpubViewState extends State<EpubView> {
                   ),
                 ),
               );
-            }),
+            },
           },
         ),
       ],
