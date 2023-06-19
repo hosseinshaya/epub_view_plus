@@ -1,4 +1,4 @@
-# epub_view
+# epub_view_plus
 
 Pure flutter widget (non native) for view EPUB documents on all platforms. Based on [epub](https://pub.dev/packages/epub) package. Render with flutter widgets (not native view) on any platforms: **Web**, **MacOs**, **Windows** **Linux**, **Android** and **iOS**
 

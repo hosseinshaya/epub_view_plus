@@ -1,4 +1,4 @@
-import 'package:epub_view/src/data/epub_cfi_reader.dart';
+import 'package:epub_view_plus/src/data/epub_cfi_reader.dart';
 import 'package:html/dom.dart' as dom;
 
 import 'models/paragraph.dart';

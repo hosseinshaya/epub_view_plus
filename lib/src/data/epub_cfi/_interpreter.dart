@@ -1,4 +1,4 @@
-import 'package:epub_view/src/data/epub_cfi/_parser.dart';
+import 'package:epub_view_plus/src/data/epub_cfi/_parser.dart';
 import 'package:html/dom.dart';
 
 class EpubCfiInterpreter {

@@ -97,7 +97,7 @@ packages:
       url: "https://pub.flutter-io.cn"
     source: hosted
     version: "1.0.5"
-  epub_view:
+  epub_view_plus:
     dependency: "direct main"
     description:
       path: ".."

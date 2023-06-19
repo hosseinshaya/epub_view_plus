@@ -1,4 +1,4 @@
-import 'package:epub_view/src/data/epub_parser.dart';
+import 'package:epub_view_plus/src/data/epub_parser.dart';
 
 export 'package:epubx/epubx.dart' hide Image;
 
