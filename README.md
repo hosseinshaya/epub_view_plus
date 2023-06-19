@@ -1,4 +1,3 @@
-Note
 Original repository: https://pub.dev/packages/epub_view
 
 The problem with the original repository is that it will no longer be maintained by the creator, for this reason this repository was created in order to maintain updated code and make respective improvements as long as it is required.
