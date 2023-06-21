@@ -340,25 +340,30 @@ class _EpubViewState extends State<EpubView> {
           builders.chapterDividerBuilder(chapters[chapterIndex]),
         Html(
           data: paragraphs[index].element.outerHtml,
-          onLinkTap: (href, _, __, ___) => onExternalLinkPressed(href!),
+          onLinkTap: (href, _, __) => onExternalLinkPressed(href!),
           style: {
             'html': Style(
-              padding: options.paragraphPadding as EdgeInsets?,
+              // padding: options.paragraphPadding as EdgeInsets?,
             ).merge(Style.fromTextStyle(options.textStyle)),
           },
-          customRender: {
-            'img': (context, child) {
-              final url = context.tree.element!.attributes['src']!
-                  .replaceAll('../', '');
-              return Image(
-                image: MemoryImage(
-                  Uint8List.fromList(
-                    document.Content!.Images![url]!.Content!,
-                  ),
-                ),
-              );
-            },
-          },
+          // extensions: [
+          //   Extention(
+          //     tagsToExtend: {'img'},
+          //     child: Builder(
+          //       builder: (context) {
+          //         final url = context.tree.element!.attributes['src']!
+          //             .replaceAll('../', '');
+          //         return Image(
+          //           image: MemoryImage(
+          //             Uint8List.fromList(
+          //               document.Content!.Images![url]!.Content!,
+          //             ),
+          //           ),
+          //         );
+          //       },
+          //     ),
+          //   ),
+          // ],
         ),
       ],
     );
