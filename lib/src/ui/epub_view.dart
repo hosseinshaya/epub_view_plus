@@ -343,27 +343,26 @@ class _EpubViewState extends State<EpubView> {
           onLinkTap: (href, _, __) => onExternalLinkPressed(href!),
           style: {
             'html': Style(
-              // padding: options.paragraphPadding as EdgeInsets?,
-            ).merge(Style.fromTextStyle(options.textStyle)),
+                    // padding: options.paragraphPadding as EdgeInsets?,
+                    )
+                .merge(Style.fromTextStyle(options.textStyle)),
           },
-          // extensions: [
-          //   Extention(
-          //     tagsToExtend: {'img'},
-          //     child: Builder(
-          //       builder: (context) {
-          //         final url = context.tree.element!.attributes['src']!
-          //             .replaceAll('../', '');
-          //         return Image(
-          //           image: MemoryImage(
-          //             Uint8List.fromList(
-          //               document.Content!.Images![url]!.Content!,
-          //             ),
-          //           ),
-          //
-          //       },
-          //     ),
-          //   ),
-          // ],
+          extensions: [
+            TagExtension(
+              tagsToExtend: {'img'},
+              builder: (context) {
+                final url = context.attributes['src']!
+                    .replaceAll('../', '');
+                return Image(
+                  image: MemoryImage(
+                    Uint8List.fromList(
+                      document.Content!.Images![url]!.Content!,
+                    ),
+                  ),
+                );
+              },
+            ),
+          ],
         ),
       ],
     );
