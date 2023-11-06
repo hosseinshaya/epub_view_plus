@@ -4,10 +4,12 @@ class EpubController {
   EpubController({
     required this.document,
     this.epubCfi,
+    this.textScaleFactor,
   });
 
   Future<EpubBook> document;
   final String? epubCfi;
+  double? textScaleFactor;
 
   _EpubViewState? _epubViewState;
   List<EpubViewChapter>? _cacheTableOfContents;

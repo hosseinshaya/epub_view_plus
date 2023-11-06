@@ -351,8 +351,7 @@ class _EpubViewState extends State<EpubView> {
             TagExtension(
               tagsToExtend: {'img'},
               builder: (context) {
-                final url = context.attributes['src']!
-                    .replaceAll('../', '');
+                final url = context.attributes['src']!.replaceAll('../', '');
                 return Image(
                   image: MemoryImage(
                     Uint8List.fromList(
@@ -369,25 +368,29 @@ class _EpubViewState extends State<EpubView> {
   }
 
   Widget _buildLoaded(BuildContext context) {
-    return ScrollablePositionedList.builder(
-      shrinkWrap: widget.shrinkWrap,
-      initialScrollIndex: _epubCfiReader!.paragraphIndexByCfiFragment ?? 0,
-      itemCount: _paragraphs.length,
-      itemScrollController: _itemScrollController,
-      itemPositionsListener: _itemPositionListener,
-      itemBuilder: (BuildContext context, int index) {
-        return widget.builders.chapterBuilder(
-          context,
-          widget.builders,
-          widget.controller._document!,
-          _chapters,
-          _paragraphs,
-          index,
-          _getChapterIndexBy(positionIndex: index),
-          _getParagraphIndexBy(positionIndex: index),
-          _onLinkPressed,
-        );
-      },
+    return MediaQuery(
+      data: MediaQuery.of(context)
+          .copyWith(textScaleFactor: widget.controller.textScaleFactor),
+      child: ScrollablePositionedList.builder(
+        shrinkWrap: widget.shrinkWrap,
+        initialScrollIndex: _epubCfiReader!.paragraphIndexByCfiFragment ?? 0,
+        itemCount: _paragraphs.length,
+        itemScrollController: _itemScrollController,
+        itemPositionsListener: _itemPositionListener,
+        itemBuilder: (BuildContext context, int index) {
+          return widget.builders.chapterBuilder(
+            context,
+            widget.builders,
+            widget.controller._document!,
+            _chapters,
+            _paragraphs,
+            index,
+            _getChapterIndexBy(positionIndex: index),
+            _getParagraphIndexBy(positionIndex: index),
+            _onLinkPressed,
+          );
+        },
+      ),
     );
   }
 
