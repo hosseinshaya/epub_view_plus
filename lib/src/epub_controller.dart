@@ -1,15 +1,16 @@
 part of 'ui/epub_view.dart';
 
 class EpubController {
-  EpubController({
-    required this.document,
-    this.epubCfi,
-    this.textScaleFactor,
-  });
+  EpubController(
+      {required this.document,
+      this.epubCfi,
+      this.textScaler,
+      required this.scrollController});
 
   Future<EpubBook> document;
   final String? epubCfi;
-  double? textScaleFactor;
+  TextScaler? textScaler;
+  final ScrollController scrollController;
 
   _EpubViewState? _epubViewState;
   List<EpubViewChapter>? _cacheTableOfContents;

@@ -370,26 +370,30 @@ class _EpubViewState extends State<EpubView> {
   Widget _buildLoaded(BuildContext context) {
     return MediaQuery(
       data: MediaQuery.of(context)
-          .copyWith(textScaleFactor: widget.controller.textScaleFactor),
-      child: ScrollablePositionedList.builder(
-        shrinkWrap: widget.shrinkWrap,
-        initialScrollIndex: _epubCfiReader!.paragraphIndexByCfiFragment ?? 0,
-        itemCount: _paragraphs.length,
-        itemScrollController: _itemScrollController,
-        itemPositionsListener: _itemPositionListener,
-        itemBuilder: (BuildContext context, int index) {
-          return widget.builders.chapterBuilder(
-            context,
-            widget.builders,
-            widget.controller._document!,
-            _chapters,
-            _paragraphs,
-            index,
-            _getChapterIndexBy(positionIndex: index),
-            _getParagraphIndexBy(positionIndex: index),
-            _onLinkPressed,
-          );
-        },
+          .copyWith(textScaler: widget.controller.textScaler),
+      child: PrimaryScrollController(
+        controller: widget.controller.scrollController,
+        child: ScrollablePositionedList.builder(
+          shrinkWrap: widget.shrinkWrap,
+          physics: const PageScrollPhysics(),
+          initialScrollIndex: _epubCfiReader!.paragraphIndexByCfiFragment ?? 0,
+          itemCount: _paragraphs.length,
+          itemScrollController: _itemScrollController,
+          itemPositionsListener: _itemPositionListener,
+          itemBuilder: (BuildContext context, int index) {
+            return widget.builders.chapterBuilder(
+              context,
+              widget.builders,
+              widget.controller._document!,
+              _chapters,
+              _paragraphs,
+              index,
+              _getChapterIndexBy(positionIndex: index),
+              _getParagraphIndexBy(positionIndex: index),
+              _onLinkPressed,
+            );
+          },
+        ),
       ),
     );
   }
